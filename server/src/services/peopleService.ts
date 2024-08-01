@@ -1,8 +1,7 @@
-//import Person from '../models/person';
-import persons from "../models/persons";
+import ingressEgressTracker from "../models/ingressEgressTracker";
 
-const getPeopleInside = async () => {
-  return persons.find(); // Simplified, adjust based on actual logic
+const getLoggedInUsers = async () => {
+  return ingressEgressTracker.find({ exitTimestamp : { $eq : null } },{ '_id':0,'userId': 1});
 };
 
-export default { getPeopleInside };
+export default { getLoggedInUsers };

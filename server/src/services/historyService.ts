@@ -1,9 +1,8 @@
-import Entry from '../models/entry';
-import Exit from '../models/exit';
+import ingressEgressTracker from "../models/ingressEgressTracker";
 
-const getHistory = async (personId: string, startDate: Date, endDate: Date) => {
-  const entries = await Entry.find({ personId, timestamp: { $gte: startDate, $lte: endDate } });
-  const exits = await Exit.find({ personId, timestamp: { $gte: startDate, $lte: endDate } });
+const getHistory = async (userId: string, startDate: Date, endDate: Date) => {
+  const entries = await ingressEgressTracker.find({ userId, timestamp: { $gte: startDate, $lte: endDate } });
+  const exits = await ingressEgressTracker.find({ userId, timestamp: { $gte: startDate, $lte: endDate } });
   return { entries, exits };
 };
 

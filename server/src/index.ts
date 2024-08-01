@@ -1,11 +1,9 @@
 import express, {Express} from "express";
 import mongoose from "mongoose";
-import entryRoutes from './routes/entryRoutes';
-import exitRoutes from './routes/exitRoutes';
 import peopleRoutes from './routes/peopleRoutes';
 import historyRoutes from './routes/historyRoutes';
 import analyticsRoutes from './routes/analyticsRoutes';
-import entryExitRoutes from './routes/entryExitRoutes';
+import entryExitRoutes from './routes/ingressEgressRoutes';
 import cors from 'cors';
 
 
@@ -23,8 +21,9 @@ mongoose
     .then(() => console.log("CONNECTED TO MONGODB!"))
     .catch((err) => console.error("Failed to Connect to MongoDB"));
 
-    app.use('/api', entryRoutes);
-    app.use('/api', exitRoutes);
+
+
+    app.use('/api', entryExitRoutes);
     app.use('/api', peopleRoutes);
     app.use('/api', historyRoutes);
     app.use('/api', analyticsRoutes);
