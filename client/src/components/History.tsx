@@ -36,11 +36,12 @@ const History: React.FC = () => {
   }, [history]);
 
   return (
-    <div className="history">
+    <div className="form-container">
       <h2>Entry/Exit History</h2>
       <div className="form-group">
         <label htmlFor="userId">User ID:</label>
         <input
+          className='input'
           type="text"
           id="userId"
           value={userId}
@@ -52,6 +53,7 @@ const History: React.FC = () => {
         <label htmlFor="startDate">Start Date:</label>
         <input
           type="date"
+          className='input'
           id="startDate"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
@@ -61,6 +63,7 @@ const History: React.FC = () => {
       <div className="form-group">
         <label htmlFor="endDate">End Date:</label>
         <input
+          className='input'
           type="date"
           id="endDate"
           value={endDate}
@@ -68,12 +71,12 @@ const History: React.FC = () => {
           required
         />
       </div>
-      <button onClick={handleFetchHistory} disabled={fetching}>
+      <button className="entry-form-button" onClick={handleFetchHistory} disabled={fetching}>
         {fetching ? 'Fetching...' : 'Fetch History'}
       </button>
       {history.length > 0 ? (
         <div className="table-container">
-          <table className="history-table">
+          <table className="table">
             <thead>
               <tr>
                 <th>User ID</th>
@@ -97,7 +100,28 @@ const History: React.FC = () => {
           </table>
         </div>
       ) : (
-        <p>No history found</p>
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Entry Gate</th>
+                <th>Entry Timestamp</th>
+                <th>Exit Gate</th>
+                <th>Exit Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>No History found</td>
+                  <td>No History found</td>
+                  <td>No History found</td>
+                  <td>No History found</td>
+                  <td>No History found</td>
+                </tr>              
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

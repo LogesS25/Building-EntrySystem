@@ -22,7 +22,7 @@ const EntryForm: React.FC = () => {
     <div className="form-container">
       <h2>Register Entry</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='form-field'>
           <label htmlFor="personId">Person ID:</label>
           <input
             type="text"
@@ -30,6 +30,7 @@ const EntryForm: React.FC = () => {
             value={personId}
             onChange={(e) => setPersonId(e.target.value)}
             required
+            className='input'
           />
         </div>
         <div>
@@ -40,9 +41,11 @@ const EntryForm: React.FC = () => {
             value={entryGate}
             onChange={(e) => setEntryGate(e.target.value)}
             required
+            className='input'
+
           />
         </div>
-        <button type="submit">Submit</button>
+        <button className="entry-form-button" type="submit">Submit</button>
       </form>
     </div>
   );

@@ -25,6 +25,7 @@ const ExitForm: React.FC = () => {
         <div>
           <label htmlFor="personId">Person ID:</label>
           <input
+            className='input'
             type="text"
             id="userId"
             value={personId}
@@ -35,6 +36,7 @@ const ExitForm: React.FC = () => {
         <div>
           <label htmlFor="exitGateId">Exit Gate:</label>
           <input
+            className='input'
             type="text"
             id="exitGateId"
             value={exitGate}
@@ -42,7 +44,7 @@ const ExitForm: React.FC = () => {
             required
           />
         </div>
-        <button type="submit">Submit</button>
+        <button className="exit-form-button" type="submit">Submit</button>
       </form>
     </div>
   );

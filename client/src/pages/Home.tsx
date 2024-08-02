@@ -9,7 +9,7 @@ const Home: React.FC = () => {
     <div className="home">
       <EntryForm />
       <ExitForm />
-      <PeopleList />
+      
     </div>
   );
 };
