@@ -1,5 +1,8 @@
 # Building Entry System
 
+## Hosted On Vercel 
+https://building-entry-system-client.vercel.app/
+
 ## Overview
 
 The Building Entry System is a comprehensive solution for tracking people entering and leaving a building. Developed using Node.js, TypeScript, Express.js, and MongoDB, this application manages entry and exit events, provides historical records, and delivers insightful analytics.
@@ -56,7 +59,7 @@ The Building Entry System is a comprehensive solution for tracking people enteri
 
 ## Deployment
 
-The application has been deployed to Vercel and is accessible at [deployment URL]. 
+The application has been deployed to Vercel and is accessible at [[deployment URL](https://building-entry-system-client.vercel.app/)]. 
 
 
 ## How to Access
