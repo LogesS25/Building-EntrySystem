@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./build/index.ts",
     "build": "tsc -p .",
-    "dev": "nodemon ./api/index.ts",
+    "dev": "nodemon ./src/index.ts",
     "test": "jest"
   },
   "dependencies": {

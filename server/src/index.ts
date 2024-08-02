@@ -1,9 +1,9 @@
 import express, {Express} from "express";
 import mongoose from "mongoose";
-import peopleRoutes from '../src/routes/peopleRoutes';
-import historyRoutes from '../src/routes/historyRoutes';
-import analyticsRoutes from '../src/routes/analyticsRoutes';
-import entryExitRoutes from '../src/routes/ingressEgressRoutes';
+import peopleRoutes from './routes/peopleRoutes';
+import historyRoutes from './routes/historyRoutes';
+import analyticsRoutes from './routes/analyticsRoutes';
+import entryExitRoutes from './routes/ingressEgressRoutes';
 import cors from 'cors';
 
 
