@@ -4,6 +4,12 @@
 
 The Building Entry System is a comprehensive solution for tracking people entering and leaving a building. Developed using Node.js, TypeScript, Express.js, and MongoDB, this application manages entry and exit events, provides historical records, and delivers insightful analytics.
 
+## Logical Details
+
+- **Entry/Exit Logic**: Ensured that the application enforces strict entry and exit rules:
+  - **No Duplicate Exits**: A user cannot exit the building more than once without first registering an entry. If a user attempts to exit without an existing entry, an error is thrown.
+  - **Unregistered Entries**: Prevents users from exiting if there is no registered entry for that user. An error is thrown if an exit is attempted without a corresponding entry.
+  - **Real-Time Updates**: The system updates the records in real-time, ensuring accurate tracking of users inside the building.
 
 
 ## Features
@@ -22,6 +28,17 @@ The Building Entry System is a comprehensive solution for tracking people enteri
      - Average duration of stay
      - Peak entry and exit times
      - Most frequently used entry and exit gates
+
+## Postman screenshots
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
 
 3. **Minimalist UI**:
    - Developed using ReactJS, the UI allows users to perform entry and exit operations and view analytics in a straightforward interface.
