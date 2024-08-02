@@ -19,7 +19,8 @@ const mongoURI: string = "mongodb+srv://sivalog25:v4hkvFJx4KOf56D2@entryexit.0vp
 mongoose
     .connect(mongoURI)
     .then(() => console.log("CONNECTED TO MONGODB!"))
-    .catch((err) => console.error("Failed to Connect to MongoDB"));
+    .catch((err) => console.error(err.message+"Failed to Connect to MongoDB"));
+
 
 
 
