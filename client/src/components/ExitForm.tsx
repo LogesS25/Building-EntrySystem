@@ -26,17 +26,17 @@ const ExitForm: React.FC = () => {
           <label htmlFor="personId">Person ID:</label>
           <input
             type="text"
-            id="personId"
+            id="userId"
             value={personId}
             onChange={(e) => setPersonId(e.target.value)}
             required
           />
         </div>
         <div>
-          <label htmlFor="exitGate">Exit Gate:</label>
+          <label htmlFor="exitGateId">Exit Gate:</label>
           <input
             type="text"
-            id="exitGate"
+            id="exitGateId"
             value={exitGate}
             onChange={(e) => setExitGate(e.target.value)}
             required

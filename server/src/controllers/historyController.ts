@@ -1,20 +1,32 @@
 import { Request, Response } from 'express';
 import ingressEgressTracker from '../models/ingressEgressTracker';
 
-
 export const getHistory = async (req: Request, res: Response) => {
-  try {    
+  try {
     const { userId, startDate, endDate } = req.query;
-    const entries = await ingressEgressTracker.find({
+
+    if (!startDate || !endDate) {
+      return res.status(400).json({ error: 'Start date and end date are required' });
+    }
+
+    const start = new Date(startDate as string);
+    const end = new Date(endDate as string);
+
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      return res.status(400).json({ error: 'Invalid date format' });
+    }
+
+    const history = await ingressEgressTracker.find({
       userId,
-      exitTimestamp: { $gte: new Date(startDate as string), $lte: new Date(endDate as string) }
+      $or: [
+        { entryTimestamp: { $gte: start, $lte: end } },
+        { exitTimestamp: { $gte: start, $lte: end } }
+      ]
     });
-    const exits = await ingressEgressTracker.find({
-      userId,
-      exitTimestamp: { $gte: new Date(startDate as string), $lte: new Date(endDate as string) }
-    });
-    res.status(200).json({ entries, exits });
+
+    res.status(200).json({ history });
   } catch (error) {
+    console.error('Error fetching history:', error);
     res.status(500).json({ error: 'Failed to retrieve history' });
   }
 };

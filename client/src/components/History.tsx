@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getHistory } from '../services/apiService';
 import '../style/styles.css';
 
@@ -7,23 +7,39 @@ const History: React.FC = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [history, setHistory] = useState<any[]>([]);
+  const [fetching, setFetching] = useState(false);
 
-  
   const handleFetchHistory = async () => {
+    setFetching(true);
     try {
       const response = await getHistory(userId, startDate, endDate);
-      setHistory(response.data);
-      console.log(response.data);
+      console.log('Full API Response:', response);
+      console.log('API Response Data:', response.data);
+
+      if (Array.isArray(response.data.history) && Array.isArray(response.data.history)) {
+        const combinedHistory = [...response.data.history, ...response.data.history];
+        setHistory(combinedHistory);
+      } else {
+        console.error('Invalid data format received from the server:', response.data);
+        setHistory([]);
+      }
     } catch (error) {
+      console.error('Error fetching history:', error);
       alert('Error fetching history');
+    } finally {
+      setFetching(false);
     }
   };
+
+  useEffect(() => {
+    console.log('History State Updated:', history);
+  }, [history]);
 
   return (
     <div className="history">
       <h2>Entry/Exit History</h2>
-      <div>
-        <label htmlFor="userId">Person ID:</label>
+      <div className="form-group">
+        <label htmlFor="userId">User ID:</label>
         <input
           type="text"
           id="userId"
@@ -32,7 +48,7 @@ const History: React.FC = () => {
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="startDate">Start Date:</label>
         <input
           type="date"
@@ -42,7 +58,7 @@ const History: React.FC = () => {
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="endDate">End Date:</label>
         <input
           type="date"
@@ -52,14 +68,37 @@ const History: React.FC = () => {
           required
         />
       </div>
-      <button onClick={handleFetchHistory}>Fetch History</button>
-      <ul>
-        {history.map((record, index) => (
-          <li key={index}>
-            {record.userId} - {record.entryGate} - {record.entryTime} - {record.exitGate} - {record.exitTime}
-          </li>
-        ))}
-      </ul>
+      <button onClick={handleFetchHistory} disabled={fetching}>
+        {fetching ? 'Fetching...' : 'Fetch History'}
+      </button>
+      {history.length > 0 ? (
+        <div className="table-container">
+          <table className="history-table">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Entry Gate</th>
+                <th>Entry Timestamp</th>
+                <th>Exit Gate</th>
+                <th>Exit Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              {history.map((record, index) => (
+                <tr key={index}>
+                  <td>{record.userId}</td>
+                  <td>{record.entryGateId}</td>
+                  <td>{record.entryTimestamp}</td>
+                  <td>{record.exitGateId}</td>
+                  <td>{record.exitTimestamp}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p>No history found</p>
+      )}
     </div>
   );
 };

@@ -33,10 +33,10 @@ const EntryForm: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="entryGate">Entry Gate:</label>
+          <label htmlFor="entryGateId">Entry Gate:</label>
           <input
             type="text"
-            id="entryGate"
+            id="entryGateId"
             value={entryGate}
             onChange={(e) => setEntryGate(e.target.value)}
             required
