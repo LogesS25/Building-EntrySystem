@@ -11,7 +11,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 
 const mongoURI: string = "mongodb+srv://sivalog25:v4hkvFJx4KOf56D2@entryexit.0vp2elc.mongodb.net/?retryWrites=true&w=majority&appName=entryexit";
