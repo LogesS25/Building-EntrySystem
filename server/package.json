@@ -1,12 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
     "start": "node ./build/index.ts",
     "build": "tsc -p .",
-    "dev": "nodemon ./src/index.ts",
+    "dev": "nodemon ./api/index.ts",
     "test": "jest"
   },
   "dependencies": {
