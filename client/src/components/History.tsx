@@ -16,9 +16,8 @@ const History: React.FC = () => {
       console.log('Full API Response:', response);
       console.log('API Response Data:', response.data);
 
-      if (Array.isArray(response.data.history) && Array.isArray(response.data.history)) {
-        const combinedHistory = [...response.data.history, ...response.data.history];
-        setHistory(combinedHistory);
+      if (Array.isArray(response.data) ) {        
+        setHistory(response.data);
       } else {
         console.error('Invalid data format received from the server:', response.data);
         setHistory([]);

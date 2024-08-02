@@ -1,9 +1,21 @@
 import ingressEgressTracker from "../models/ingressEgressTracker";
+import { Request, Response } from 'express';
 
-const getHistory = async (userId: string, startDate: Date, endDate: Date) => {
-  const entries = await ingressEgressTracker.find({ userId, timestamp: { $gte: startDate, $lte: endDate } });
-  const exits = await ingressEgressTracker.find({ userId, timestamp: { $gte: startDate, $lte: endDate } });
-  return { entries, exits };
+
+const getHistory = async ( startDate: Date, endDate: Date,userId?: string) => {
+  try {
+    const history = await ingressEgressTracker.find({
+      userId,
+      $or: [
+        { entryTimestamp: { $gte: startDate, $lte: endDate } },
+        { exitTimestamp: { $gte: startDate, $lte: endDate } }
+      ]    
+    });
+    return history ;
+  } catch (error) {
+    console.error('Error fetching history:', error);
+    //res.status(500).json({ error: 'Failed to retrieve history' });
+  }
 };
 
 export default { getHistory };

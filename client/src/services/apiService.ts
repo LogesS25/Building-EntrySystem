@@ -17,9 +17,17 @@ export const getPeople = () => {
 export const getHistory = (userId: string, startDate: string, endDate: string) => {
   const response =  axios.get(`${API_URL}/history`, { params: { userId, startDate, endDate } });
   console.log('API response:', response);
-  return response;
-};
+  return response;};
 
-export const getAnalytics = () => {
-  return axios.get(`${API_URL}/analytics`);
-};
+
+
+  export const getAnalytics = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/analytics`); // Ensure this matches your backend route
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching analytics:', error);
+      throw error; // Rethrow the error to be caught in the component
+    }
+  };
+
