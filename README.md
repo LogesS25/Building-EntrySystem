@@ -62,10 +62,6 @@ The Building Entry System is a comprehensive solution for tracking people enteri
 The application has been deployed to Vercel and is accessible at [[deployment URL](https://building-entry-system-client.vercel.app/)]. 
 
 
-## How to Access
-
-- **Deployment URL**: [Your Deployment URL]
-- **GitHub Repository**: [Your GitHub Repository URL]
 
 ## Contact
 

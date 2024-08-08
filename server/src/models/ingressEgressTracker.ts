@@ -5,8 +5,7 @@ interface IingressEgressTracker extends Document {
   entryTimestamp: Date;
   exitTimestamp: Date;
   entryGateId: string;
-  exitGateId: string;
-  
+  exitGateId: string;  
 }
 
 const ingressEgressSchema: Schema = new Schema({

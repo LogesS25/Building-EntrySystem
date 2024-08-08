@@ -3,8 +3,7 @@ import ingressEgressTracker from '../models/ingressEgressTracker';
 const registerEntry = async (userId: string, entryGateId: string) => {
 
   const record = await ingressEgressTracker.find({
-    userId,
-    //timestamp: { $gte: new Date(startDate as string), $lte: new Date(endDate as string) }    
+    userId,        
   }).sort({entryTimestamp:-1}).limit(1);  
 
   console.log(record);
